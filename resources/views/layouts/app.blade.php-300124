@@ -1,0 +1,20 @@
+@include('layout.header')
+@stack('css')
+@include('layout.leftpanel')
+@include('layout.topbar')
+
+@if ($message = Session::get('success'))
+    <div class="alert alert-success text-center" role="alert">
+        {{ $message }}
+    </div>
+@elseif ($message = Session::get('error'))
+    <div class="alert alert-warning text-center" role="alert">
+        {{ $message }}
+    </div>
+@endif
+{{-- content start --}}
+@yield('content')
+{{-- content end --}}
+
+@include('layout.footer')
+@stack('javascript')
